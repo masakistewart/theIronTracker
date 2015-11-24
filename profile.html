@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TheIronTracker-LandingPage</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://bootswatch.com/superhero/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/landingPage.css">
+		<link rel="stylesheet" type="text/css" href="css/profile.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+		<script type="text/javascript" src="js/profile.js"></script>
+	</head>
+	<body>
+		<div class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						TheIronTracker
+					</a>
+				</div>
+				<div class="navbar-right">
+					<a href="index.html" class="btn btn-default navbar-btn">Sign Out</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="goalsHalf">
+			<h1 class="text-center">Goals Half</h1>
+			<h5 class="text-center"></h5>
+			<div id="goalsContainer" class="container">
+				<div class="col-md-12">Goal Progress</div>
+
+				<div class="col-md-4">
+					<table class="table">
+						<tr class="text-center">
+							<th>Amount</th>
+							<th>Date - /year/day/month</th>
+						</tr>
+						<tbody id="tableTarget">
+						</tbody>
+					</table>
+				</div>
+
+				<div class="col-md-4" id="chartTarget">
+					<canvas id="myChart" width="400" height="300"></canvas>
+				</div>
+				<div class="col-md-4" id="finalGoal">
+					<h3 class="text-right"></h3>
+				</div>
+				<div id="goalButtonTarget" class="col-md-12 text-center">
+				</div>
+			</div>
+		</div>
+
+		<div id="profileHalf">
+			<div class="container">
+				<div class="col-md-12" id="welcome">
+					
+				</div>
+				<div class="col-md-3" id="profilePicHere">
+
+				</div>
+				<div class="col-md-6" id="bioHere">
+
+				</div>
+				<div class="col-md-12 text-center" id="buttonsHere">
+					
+				</div>
+			</div>
+		</div>
+
+
+		<div class="navbar navbar-fixed-bottom navbar-default">
+			<div class="container">
+				<p class="navbar-text navbar-center">CreatedBy: CairoStewart</p>
+			</div>
+		</div>
+
+	</body>
+</html>

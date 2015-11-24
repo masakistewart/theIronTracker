@@ -1,0 +1,56 @@
+#bioHere {
+	margin-top: 5%;
+	font-family: arkhip;
+	background: #bbb;
+	height: 200px;
+	overflow: scroll;
+	border-radius: 25px;
+	box-shadow: inset 0 0 10px black;
+}
+
+#profileHalf {
+	height: 450px;
+	background: #999;
+	box-shadow: inset 0px 0 10px black;
+}
+
+#goalsContainer {
+	margin-top: 3%;
+}
+
+#profilePicHere {
+	margin-top: 2%;
+}
+
+#goalTargetButton {
+	padding-bottom: 15px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+#bioText {
+	margin-top: 3%;
+	color: #444;
+}
+
+
+#profilePic {
+	margin-top: 20%;
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: 5px solid white;
+	box-shadow: 0 0 15px black;
+}
+
+table {
+	width: 350px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TheIronTracker-LandingPage</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://bootswatch.com/superhero/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/landingPage.css">
+		<link rel="stylesheet" type="text/css" href="css/addProgress-newGoal.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/newGoal.js"></script>
+	</head>
+	<body>
+		<div class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						TheIronTracker
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="well well-lg goalForm" id="large-well">
+			<div class="formGroup">
+				<div class="radio" id='radioGroup'>
+				    <label><input id="distanceOverTimeRadio" name="params" type="radio"> Distance over Time</label>
+				    <label><input id="maxRadio" name="params" type="radio"> Max (reps, maxWeight)</label>
+				    <label><input id="weightRadio" name="params" type="radio"> Weight</label>
+				</div>
+			</div>
+			<div class="form-group max">
+				<label for="maxTitle">Title</label>
+				<input id="maxTitle" type="text">
+				<label for="max">Target Max (reps or MaxWeight)</label>
+				<input class="form-control" type="number" id="max">
+				<button class="btn btn-success" id="updateMax">update Goal</button>
+			</div>
+
+			<div class="form-group weight">
+				<label for="weightTitle">Title</label>
+				<input id="weightTitle" type="text">
+				<label for="weight">Target Weight (in lbs)</label>
+				<input class="form-control" type="number" id="weight">
+				<button class="btn btn-success" id="updateWeight">Submit Goal</button>
+			</div>
+
+			<div class="form-group distance">
+				<label for="distanceTitle">Title</label>
+				<input id="distanceTitle" type="text">
+				<label for="distance">Distance (in miles)</label>
+				<input class="form-control" type="number" id="distance">
+				<label for="time">Time (in minutes)</label>
+				<input class="form-control" type="number" id="time">
+				<button class="btn btn-success" id="updateDistance">Submit Goal</button>
+			</div>
+		</div>
+
+		<div class="navbar navbar-fixed-bottom navbar-default">
+			<div class="container">
+				<p class="navbar-text navbar-center">CreatedBy: CairoStewart</p>
+			</div>
+		</div>
+
+	</body>
+</html>

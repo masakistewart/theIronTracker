@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TheIronTracker-LandingPage</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://bootswatch.com/superhero/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/signIn-signUp.css">
+		<link rel="stylesheet" type="text/css" href="css/landingPage.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src='js/updateProfile.js'></script>
+	</head>
+	<body>
+		<div class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						TheIronTracker
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="large-well" class="well well-lg">
+			<h4 class="text-center">Update Profile</h4>
+			<div id="signUp">
+				<form role="form" id='SignUp'>
+					<div class="form-group">
+				    	<label for="name">Name:</label>
+				    	<input type="text" class="form-control" id="name">
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="profileURL">Profile ImageURL</label>
+				    	<input type="text" class="form-control" id="profileURL">
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="bio">Bio:</label>
+				    	<textarea class="form-control" id="bio"></textarea>
+				  	</div>
+				</form>
+				<div id="error">
+				</div>
+				<button class="btn btn-success" id="updateAccount">Update Profile</button>
+			</div>
+
+		<div class="navbar navbar-fixed-bottom navbar-default">
+			<div class="container">
+				<div class="navbar-text">CreatedBy: CairoStewart</div>
+			</div>
+		</div>
+
+	</body>
+</html>
