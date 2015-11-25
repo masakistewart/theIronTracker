@@ -10,7 +10,7 @@
 
 #profileHalf {
 	height: 450px;
-	background: #999;
+	background: #666;
 	box-shadow: inset 0px 0 10px black;
 }
 
@@ -19,7 +19,7 @@
 }
 
 #goalsHalf {
-	height: 500px;
+	height: 550px;
 }
 
 #profilePicHere {
@@ -41,12 +41,19 @@ a:hover {
 	color: #444;
 }
 
+#chuck {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+
 
 #profilePic {
-	margin-top: 20%;
+	margin-top: 25%;
+	margin-left: 5%;
 	height: 150px;
 	width: 150px;
-	border-radius: 50%;
+	border-radius: 25px;
 	border: 5px solid white;
 	box-shadow: 0 0 15px black;
 }

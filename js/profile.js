@@ -19,16 +19,15 @@ $('document').ready(function() {
 	// set profile Image to chosen or random;
 	if(!img === ""){
 		var bioHeadingDiv = $('#profilePicHere').append('<img id="profilePic" src="' + img + '" />');
-
 	} else {
 		var tmpImg = "img/img" + randomNum() + ".jpg"
 		var bioHeadingDiv = $('#profilePicHere').append('<img id="profilePic" src="'+ tmpImg +'" />');
 	}
 
 	// add buttons for update progress, new goal and append to the dom
-	var updatePage = $('<button class="btn btn-default"><a href="updateProfile.html">Update Profile</a></button>')
-	var newGoalButton = $('<button>Add New Goal</button>').addClass('btn btn-default').on('click', function(){ window.location.href = 'newGoal.html';})
-	var updateProgressButton = $('<button>Update Goal Progress</button>').addClass('btn btn-default').on('click', function(){ window.location.href = 'addProgress.html'});
+	var updatePage = $('<button class="btn btn-warning"><a href="updateProfile.html">Update Profile</a></button>')
+	var newGoalButton = $('<button>Add New Goal</button>').addClass('btn btn-warning').on('click', function(){ window.location.href = 'newGoal.html';})
+	var updateProgressButton = $('<button>Update Goal Progress</button>').addClass('btn btn-warning').on('click', function(){ window.location.href = 'addProgress.html'});
 	$('#buttonsHere').append(newGoalButton, updateProgressButton, updatePage);
 
 	// display data in tables and charts
@@ -38,9 +37,6 @@ $('document').ready(function() {
 	}
 	function createChartButton(id) {
 		$("#goalButtonTarget").append('<button class="btn btn-danger" id=' + id + '>' + localStoragePARSE.goals[id].title + '</button>');
-	}
-	function randomForChart() {
-		return Math.floor(Math.random() * localStoragePARSE.goals.length);
 	}
 	function MakeChartData() {
 		this.labels = [];
@@ -56,26 +52,6 @@ $('document').ready(function() {
 	            data: []
 			}
 		]
-	}
-
-	chartData = new MakeChartData();
-	function makeChart(name) {
-		for(var i = 0; i < goalsARRAY.length; i++) {
-			var goalsArr = localStoragePARSE.goals[0].goalHistory;
-			createTd(goalsArr[i]);
-			if(localStoragePARSE.goals[0].target2 !== undefined){
-				$('h3').text('<h3>Target Goal: '+ localStoragePARSE.goals[0].target +' in ' + localStoragePARSE.goals[0].target2 +' mins')
-			} else if(localStoragePARSE.goals[0].target === undefined){
-				$('h3').text('Update Goal Progress');
-			} else {
-				$('h3').text('Target Goal: '+ localStoragePARSE.goals[0].target)
-			}
-			$('h1').text(localStoragePARSE.goals[0].title);
-			name.datasets[0].label = localStoragePARSE.goals[0].goalType;
-			name.labels.push(goalsArr[i].currentDate);
-			name.datasets[0].data.push(goalsArr[i].current);
-			console.log(name);
-		}
 	}
 
 	function makeChartID(varName, lengthOfGoalHistory, id) {
@@ -110,7 +86,7 @@ $('document').ready(function() {
 			// fill chart
 			chartData = new MakeChartData();
 			makeChartID(chartData, historyArr, thisID);
-			var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "beige"});
+			var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "white"});
 			myLineChart.update();
 		})
 
@@ -123,6 +99,7 @@ $('document').ready(function() {
 	})
 
 	call.done(function(data){
-		$('h5').text(data.value.joke);
+		console.log(data)
+		$('#chuck').text(data.value.joke);
 	})
 })

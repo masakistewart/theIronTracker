@@ -9,7 +9,8 @@ $('document').ready(function(){
 			console.log('success');
 			window.location.href = 'profile.html';
 		} else {
-			$('#signIn').append('<p class="error">Username not found!</p>');
+			$('#Error').append('<p class="text-danger">Username not found!</p>');
+			$('p').fadeOut(900)
 		}
 	});
 })
