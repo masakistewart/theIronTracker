@@ -33,7 +33,7 @@ $('document').ready(function() {
 
 	// display data in tables and charts
 	function createTd(item) {
-		var td = $("<tr class='text-center'><td>"+ item.current +"</td><td>"+ item.currentDate +"</td></tr>");
+		var td = $("<tr><td>"+ item.current +"</td><td>"+ item.currentDate +"</td></tr>");
 		$("#tableTarget").append(td);
 	}
 	function createChartButton(id) {
@@ -83,7 +83,7 @@ $('document').ready(function() {
 			var goalsArr = localStoragePARSE.goals[id].goalHistory;
 			createTd(goalsArr[i]);
 			if(localStoragePARSE.goals[id].target2 !== undefined){
-				$('h3').text('Target Goal: '+ localStoragePARSE.goals[id].target +' in ' + localStoragePARSE.goals[id].target2 +' mins')
+				$('h3').text('Target Goal: '+ localStoragePARSE.goals[id].target +' miles in ' + localStoragePARSE.goals[id].target2 +' mins')
 			} else if(localStoragePARSE.goals[id].target === undefined){
 				$('h3').text('Update Goal Progress First');
 			} else {
@@ -95,13 +95,12 @@ $('document').ready(function() {
 		}
 	}
 
-	makeChart(chartData);
+	// makeChart(chartData);
 	var ctx = document.getElementById("myChart").getContext("2d");
-	var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "white"});
+	// var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "white"});
 
 	for (var i = 0; i < localStoragePARSE.goals.length; i++) {
 		createChartButton(i);
-		myLineChart.destroy();
 		$('#' + i).on('click', function(){
 			var thisID = this.id;
 			var historyArr = localStoragePARSE.goals[this.id].goalHistory;
@@ -111,7 +110,7 @@ $('document').ready(function() {
 			// fill chart
 			chartData = new MakeChartData();
 			makeChartID(chartData, historyArr, thisID);
-			myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "beige"});
+			var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "beige"});
 			myLineChart.update();
 		})
 
