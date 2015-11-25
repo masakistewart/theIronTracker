@@ -7,6 +7,7 @@ $('document').ready(function() {
 	var bio = localStoragePARSE.bio;
 	var lengthOfGoals = localStoragePARSE.goals.length;
 	var goalsARRAY = localStoragePARSE.goals[0].goalHistory;
+	var ctx = document.getElementById("myChart").getContext("2d");
 	var chartData;
 	var chartData2;
 	function randomNum() {
@@ -70,10 +71,6 @@ $('document').ready(function() {
 			varName.datasets[0].data.push(goalsArr[i].current);
 		}
 	}
-
-	// makeChart(chartData);
-	var ctx = document.getElementById("myChart").getContext("2d");
-	// var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "white"});
 
 	for (var i = 0; i < localStoragePARSE.goals.length; i++) {
 		createChartButton(i);
