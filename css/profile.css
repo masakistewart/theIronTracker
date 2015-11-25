@@ -51,6 +51,8 @@ a:hover {
 	box-shadow: 0 0 15px black;
 }
 
-table {
+table, #tText {
+	margin-left: 10%;
 	width: 350px;
+	font-size: 1em;
 }
