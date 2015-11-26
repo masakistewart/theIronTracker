@@ -26,17 +26,18 @@ $('document').ready(function() {
 	}
 
 	// add buttons for update progress, new goal and append to the dom
+	var deleteButton = $("<button id='deleteButton' class='btn btn-warning'>Delete Goal</button>").click(function(){ window.location.href = 'deleteGoal.html'})
 	var updatePage = $('<button class="btn btn-warning"><a href="updateProfile.html">Update Profile</a></button>')
 	var newGoalButton = $('<button>Add New Goal</button>').addClass('btn btn-warning').on('click', function(){ window.location.href = 'newGoal.html';})
 	var updateProgressButton = $('<button>Update Goal Progress</button>').addClass('btn btn-warning').on('click', function(){ window.location.href = 'addProgress.html'});
-	$('#buttonsHere').append(newGoalButton, updateProgressButton, updatePage);
+	$('#buttonsHere').append(newGoalButton, updateProgressButton, updatePage, deleteButton);
 
 	// display data in tables and charts
-	function createTd(item) {
-		var td = $("<tr><td>"+ item.current +"</td><td>"+ item.currentDate +"</td></tr>");
+	function createTd(item, index, value) {
+		var td = $("<tr id=" + index + " class="+value+"><td>"+ item.current +"</td><td>"+ item.currentDate +"</td></tr>");
 		$("#tableTarget").append(td);
 	}
-	function createChartButton(id) {
+	function createChartButton(id, value) {
 		$("#goalButtonTarget").append('<button class="btn btn-danger" id=' + id + '>' + localStoragePARSE.goals[id].title + '</button>');
 	}
 	function MakeChartData() {
@@ -58,18 +59,53 @@ $('document').ready(function() {
 	function makeChartID(varName, lengthOfGoalHistory, id) {
 		for(var i = 0; i < lengthOfGoalHistory.length; i++) {
 			var goalsArr = localStoragePARSE.goals[id].goalHistory;
-			createTd(goalsArr[i]);
+			createTd(goalsArr[i], i, goalsArr[i].current);
 			if(localStoragePARSE.goals[id].target2 !== undefined){
-				$('h3').text('Target Goal: '+ localStoragePARSE.goals[id].target +' miles in ' + localStoragePARSE.goals[id].target2 +' mins')
+				$('h4').text('Target Goal: '+ localStoragePARSE.goals[id].target +' miles in ' + localStoragePARSE.goals[id].target2 +' mins')
 			} else if(localStoragePARSE.goals[id].target === undefined){
-				$('h3').text('Update Goal Progress First');
+				$('h4').text('Update Goal Progress First');
 			} else {
-				$('h3').text('Target Goal: '+ localStoragePARSE.goals[id].target)
+				$('h4').text('Target Goal: '+ localStoragePARSE.goals[id].target);
 			}
 			varName.datasets[0].label = localStoragePARSE.goals[id].title;
 			varName.labels.push(goalsArr[i].currentDate);
 			varName.datasets[0].data.push(goalsArr[i].current);
 		}
+	}
+
+	// calculate percentage increase between two goals
+	function percentage(a, b){
+	    var increase = b - a;
+	    var step2 = increase / a;
+	    return step2 * 100;
+	}
+
+	function totalPercentage() {
+		var prev;
+		var trJQ = $('tr');
+		for (var i = 0; i < trJQ.length - 1; i++) {
+			if(i === 0){
+				var tr = document.getElementById(i);
+				var node = document.createElement("TD");                 // Create a <li> node
+				var textnode = document.createTextNode("100%");      // Create a text node
+				node.appendChild(textnode);
+				tr.appendChild(node);
+				prev = tr.className;
+				console.log(prev);
+			} else {
+				var tr = document.getElementById(i);
+				var node = document.createElement('TD');
+				console.log(i)
+				console.log(tr.className)
+				var className = tr.className;
+				var percent = percentage(prev, tr.className);
+				var floored = Math.floor(percent) + "%"
+				var textnode = document.createTextNode(floored);
+				node.appendChild(textnode);
+				tr.appendChild(node);
+				prev = tr.className;
+			}
+		};
 	}
 
 	for (var i = 0; i < localStoragePARSE.goals.length; i++) {
@@ -85,10 +121,10 @@ $('document').ready(function() {
 			makeChartID(chartData, historyArr, thisID);
 			var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "white"});
 			myLineChart.update();
+			totalPercentage();
 		})
-
 	};
-
+	// chuck norris quotes from the chuck norris db api
 	var call = $.ajax({
 		type: 'GET',
 		url: 'http://api.icndb.com/jokes/random?limitTo=[nerdy]'
@@ -99,4 +135,5 @@ $('document').ready(function() {
 		console.log(data)
 		$('#chuck').text(data.value.joke);
 	})
+
 })
