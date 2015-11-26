@@ -6,7 +6,6 @@ $('document').ready(function() {
 	var img = localStoragePARSE.image;
 	var bio = localStoragePARSE.bio;
 	var lengthOfGoals = localStoragePARSE.goals.length;
-	var goalsARRAY = localStoragePARSE.goals[0].goalHistory;
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var chartData;
 	var chartData2;
