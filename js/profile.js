@@ -26,11 +26,11 @@ $('document').ready(function() {
 	}
 
 	// add buttons for update progress, new goal and append to the dom
-	var deleteButton = $("<button id='deleteButton' class='btn btn-warning'>Delete Goal</button>").click(function(){ window.location.href = 'deleteGoal.html'})
-	var updatePage = $('<button class="btn btn-warning"><a href="updateProfile.html">Update Profile</a></button>')
-	var newGoalButton = $('<button>Add New Goal</button>').addClass('btn btn-warning').on('click', function(){ window.location.href = 'newGoal.html';})
-	var updateProgressButton = $('<button>Update Goal Progress</button>').addClass('btn btn-warning').on('click', function(){ window.location.href = 'addProgress.html'});
-	$('#buttonsHere').append(newGoalButton, updateProgressButton, updatePage, deleteButton);
+	var deleteButton = $("<button id='deleteButton' class='btn btn-default navbar-btn'>Delete Goal</button>").click(function(){ window.location.href = 'deleteGoal.html'})
+	var updatePage = $('<button class="btn btn-default navbar-btn"><a href="updateProfile.html">Update Profile</a></button>')
+	var newGoalButton = $('<button>Add New Goal</button>').addClass('btn btn-default navbar-btn').on('click', function(){ window.location.href = 'newGoal.html';})
+	var updateProgressButton = $('<button>Update Goal Progress</button>').addClass('btn btn-default navbar-btn').on('click', function(){ window.location.href = 'addProgress.html'});
+	$('#buttonsHere').prepend(newGoalButton, updateProgressButton, updatePage, deleteButton);
 
 	// display data in tables and charts
 	function createTd(item, index, value) {
@@ -135,5 +135,4 @@ $('document').ready(function() {
 		console.log(data)
 		$('#chuck').text(data.value.joke);
 	})
-
-})
+});
