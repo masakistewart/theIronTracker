@@ -131,7 +131,6 @@ $('document').ready(function() {
 	})
 
 	call.done(function(data){
-		console.log(data)
 		$('#chuck').text(data.value.joke);
 	})
 });
