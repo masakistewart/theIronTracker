@@ -25,10 +25,10 @@ $('document').ready(function() {
 	}
 
 	// add buttons for update progress, new goal and append to the dom
-	var deleteButton = $("<button id='deleteButton' class='btn btn-default navbar-btn'>Delete Goal</button>").click(function(){ window.location.href = 'deleteGoal.html'})
-	var updatePage = $('<button class="btn btn-default navbar-btn"><a href="updateProfile.html">Update Profile</a></button>')
-	var newGoalButton = $('<button>Add New Goal</button>').addClass('btn btn-default navbar-btn').on('click', function(){ window.location.href = 'newGoal.html';})
-	var updateProgressButton = $('<button>Update Goal Progress</button>').addClass('btn btn-default navbar-btn').on('click', function(){ window.location.href = 'addProgress.html'});
+	var deleteButton = $("<li><a navbar-btn'>Delete Goal</a></li>").click(function(){ window.location.href = 'deleteGoal.html'})
+	var updatePage = $('<li><a href="updateProfile.html">Update Profile</a></li>')
+	var newGoalButton = $('<li><a>Add New Goal</a></li>').on('click', function(){ window.location.href = 'newGoal.html';})
+	var updateProgressButton = $('<li><a>Update Goal Progress</a></li>').on('click', function(){ window.location.href = 'addProgress.html'});
 	$('#buttonsHere').prepend(newGoalButton, updateProgressButton, updatePage, deleteButton);
 
 	// display data in tables and charts
