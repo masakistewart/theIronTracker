@@ -14,7 +14,7 @@ $('document').ready(function(){
 			tmpObj.goalType = 'max';
 			this.goals.push(tmpObj);
 		} else if ($('#distanceOverTime')[0].checked){
-			tmpObj.goalType = 'distanceOverTime';
+			tmpObj.goalType = 'distance';
 			this.goals.push(tmpObj);
 		} else {
 			tmpObj.goalType = 'weight';
