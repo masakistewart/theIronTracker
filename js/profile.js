@@ -16,6 +16,9 @@ $('document').ready(function() {
 	var updateProgressButton = $('<button class="btn btn-warning">Update Goal Progress</button>').on('click', function(){ window.location.href = 'addProgress.html'});
 	$('#menuButtonTarget').prepend(newGoalButton, updateProgressButton, updatePage, deleteButton);
 
+	//add name to dropdown Menu
+	$('#nameTarget').append(Username);
+
 	// display data in tables and charts
 	function createTd(item, index, value) {
 		var td = $("<tr id=" + index + " class="+value+"><td>"+ item.current +"</td><td>"+ item.currentDate +"</td></tr>");
