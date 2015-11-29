@@ -6,9 +6,7 @@ $('document').ready(function(){
 
 	function User(){
 		this.name = $("#name").val();
-		this.bio = $("#bio").val();
 		this.goals = [];
-		this.image = $('#profileURL').val();
 		var tmpObj = {
 			goalHistory: []
 		};
@@ -25,7 +23,7 @@ $('document').ready(function(){
 	}
 
 	$('#createAccount').on('click', function(){
-		if($('#name').val() && $('#bio').val()){
+		if($('#name').val()){
 			USER = new User();
 			pushUserToLocalStorage(USER);
 			window.location.href = 'initialGoal.html';

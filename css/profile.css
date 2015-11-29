@@ -19,7 +19,11 @@
 }
 
 #goalsHalf {
-	height: 550px;
+	height: 600px;
+}
+
+#menuButtonTarget {
+	margin-bottom: 5%;
 }
 
 #profilePicHere {

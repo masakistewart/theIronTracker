@@ -7,25 +7,9 @@ $('document').ready(function(){
 	var localStorageOBJ = JSON.parse(localStorageGET);
 
 	$('#updateAccount').on('click', function() {
-		if($('#name').val() && $('#bio').val() && $('#profileURL').val()){
+		
+		 if ($('#name').val()){
 			localStorageOBJ.name = $("#name").val();
-			localStorageOBJ.bio = $("#bio").val();
-			localStorageOBJ.image = $('#profileURL').val();
-		} else if ($('#bio').val() && $('#name').val()) {
-			localStorageOBJ.bio = $("#bio").val();
-			localStorageOBJ.name = $("#name").val();
-		} else if ($('#profileURL').val() && $('#bio').val()){
-			localStorageOBJ.image = $('#profileURL').val();
-			localStorageOBJ.bio = $("#bio").val();
-		} else if ( $('#name').val() && $('#profileURL').val()){
-			localStorageOBJ.image = $('#profileURL').val();
-			localStorageOBJ.bio = $("#bio").val();
-		} else if ($('#name').val()){
-			localStorageOBJ.name = $("#name").val();
-		} else if ($('#bio').val()){
-			localStorageOBJ.bio = $("#bio").val();
-		} else if ($('#profileURL').val()){
-			localStorageOBJ.image = $('#profileURL').val();
 		} else {
 			$('#error').append($('<p class="error text-center text-danger">ERROR</p>'));
 			$('.error').fadeOut(1000);

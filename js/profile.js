@@ -6,30 +6,15 @@ $('document').ready(function() {
 	var img = localStoragePARSE.image;
 	var bio = localStoragePARSE.bio;
 	var lengthOfGoals = localStoragePARSE.goals.length;
-	var ctx = document.getElementById("myChart").getContext("2d");
 	var chartData;
-	var chartData2;
-	function randomNum() {
-		return Math.floor(Math.random() * 12) + 1;
-	}
-
-	//set welcome of user and append bio
-	$('#welcome').append('<h2 class="text-center">'+Username+'</h2>');
-	$('#bioHere').append('<p id="bioText">' + bio + '</p>');
-	// set profile Image to chosen or random;
-	if(!img === ""){
-		var bioHeadingDiv = $('#profilePicHere').append('<img id="profilePic" src="' + img + '" />');
-	} else {
-		var tmpImg = "img/img" + randomNum() + ".jpg"
-		var bioHeadingDiv = $('#profilePicHere').append('<img id="profilePic" src="'+ tmpImg +'" />');
-	}
+	var chartArray = []
 
 	// add buttons for update progress, new goal and append to the dom
-	var deleteButton = $("<li><a navbar-btn'>Delete Goal</a></li>").click(function(){ window.location.href = 'deleteGoal.html'})
-	var updatePage = $('<li><a href="updateProfile.html">Update Profile</a></li>')
-	var newGoalButton = $('<li><a>Add New Goal</a></li>').on('click', function(){ window.location.href = 'newGoal.html';})
-	var updateProgressButton = $('<li><a>Update Goal Progress</a></li>').on('click', function(){ window.location.href = 'addProgress.html'});
-	$('#buttonsHere').prepend(newGoalButton, updateProgressButton, updatePage, deleteButton);
+	var deleteButton = $("<button class='btn btn btn-warning'>Delete Goal</button>").click(function(){ window.location.href = 'deleteGoal.html'})
+	var updatePage = $('<button class="btn btn-warning">Update Profile</button>').click(function(){ window.location.href = 'updateProfile.html'})
+	var newGoalButton = $('<button class="btn btn-warning"> Add New Goal</button>').on('click', function(){ window.location.href = 'newGoal.html';})
+	var updateProgressButton = $('<button class="btn btn-warning">Update Goal Progress</button>').on('click', function(){ window.location.href = 'addProgress.html'});
+	$('#menuButtonTarget').prepend(newGoalButton, updateProgressButton, updatePage, deleteButton);
 
 	// display data in tables and charts
 	function createTd(item, index, value) {
@@ -37,7 +22,7 @@ $('document').ready(function() {
 		$("#tableTarget").append(td);
 	}
 	function createChartButton(id, value) {
-		$("#goalButtonTarget").append('<button class="btn btn-danger" id=' + id + '>' + localStoragePARSE.goals[id].title + '</button>');
+		$("#goalButtonTarget").append('<button class="btn btn-success" id=' + id + '>' + localStoragePARSE.goals[id].title + '</button>');
 	}
 	function MakeChartData() {
 		this.labels = [];
@@ -85,16 +70,14 @@ $('document').ready(function() {
 		for (var i = 0; i < trJQ.length - 1; i++) {
 			if(i === 0){
 				var tr = document.getElementById(i);
-				var node = document.createElement("TD");                 // Create a <li> node
-				var textnode = document.createTextNode("100%");      // Create a text node
+				var node = document.createElement("TD");
+				var textnode = document.createTextNode("0%");
 				node.appendChild(textnode);
 				tr.appendChild(node);
 				prev = tr.className;
-				console.log(prev);
 			} else {
 				var tr = document.getElementById(i);
 				var node = document.createElement('TD');
-				console.log(i)
 				console.log(tr.className)
 				var className = tr.className;
 				var percent = percentage(prev, tr.className);
@@ -107,18 +90,29 @@ $('document').ready(function() {
 		};
 	}
 
+	function capitalizeFirstLetter(string) {
+    	return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+
 	for (var i = 0; i < localStoragePARSE.goals.length; i++) {
 		createChartButton(i);
 		$('#' + i).on('click', function(){
 			var thisID = this.id;
 			var historyArr = localStoragePARSE.goals[this.id].goalHistory;
-			$('h1').text(localStoragePARSE.goals[this.id].title);
+			var goalTitle = $('h1#goalTitle');
+			goalTitle.empty();
+			$('#chartTarget').empty();
+			$('#chartTarget').append('<canvas id="myChart" style="width: 400px; height: 450px;"></canvas>')
+
+			goalTitle.append(localStoragePARSE.goals[this.id].title);
+			goalTitle.append('<small>(' + capitalizeFirstLetter(localStoragePARSE.goals[this.id].goalType) + ')</small>')
 			// reset chart
 			$('#tableTarget').empty();
 			// fill chart
+			var ctx = document.getElementById("myChart").getContext("2d");
 			chartData = new MakeChartData();
 			makeChartID(chartData, historyArr, thisID);
-			var myLineChart = new Chart(ctx).Line(chartData, {scaleFontColor: "white", scaleGridLineColor : "white"});
+			var myLineChart = new Chart(ctx).Line(chartData, {scaleLineColor: "white", scaleFontColor: "white", scaleGridLineColor : "white"});
 			myLineChart.update();
 			totalPercentage();
 		})
@@ -129,7 +123,6 @@ $('document').ready(function() {
 		url: 'http://api.icndb.com/jokes/random?limitTo=[nerdy]'
 
 	})
-
 	call.done(function(data){
 		$('#chuck').text(data.value.joke);
 	})
