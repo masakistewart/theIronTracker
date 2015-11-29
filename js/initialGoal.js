@@ -23,7 +23,7 @@ $('document').ready(function() {
 			localStorage.setItem('user', JSON.stringify(localOBJ));
 			window.location.href = "profile.html";
 		})
-	} else if (goalType === 'distanceOverTime') {
+	} else if (goalType === 'distance') {
 		$('.distance').css('display', 'block');
 		$('#submitDistance').on('click', function(){
 			var goalAmount = $('#distance').val();
